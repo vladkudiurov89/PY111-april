@@ -1,7 +1,7 @@
 """
-My little Stack
+My little l
 """
-
+stack = []
 
 def push(elem) -> None:
 	"""
@@ -10,6 +10,8 @@ def push(elem) -> None:
 	:param elem: element to be pushed
 	:return: Nothing
 	"""
+	global stack
+	stack.append(elem)
 	return None
 
 
@@ -19,7 +21,12 @@ def pop():
 
 	:return: popped element
 	"""
-	return None
+	global stack
+	if not stack:
+		return None
+	pop_el = stack[-1]
+	del stack[-1]
+	return pop_el
 
 
 def peek(ind: int = 0):
@@ -29,7 +36,7 @@ def peek(ind: int = 0):
 	:param ind: index of element (count from the top)
 	:return: peeked element
 	"""
-	return None
+	return stack[-ind-1]
 
 
 def clear() -> None:
@@ -38,4 +45,7 @@ def clear() -> None:
 
 	:return: None
 	"""
+	global stack
+	stack.clear()
+
 	return None
