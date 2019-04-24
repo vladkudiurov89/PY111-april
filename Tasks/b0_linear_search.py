@@ -36,3 +36,4 @@ def min_weight_search(Graph) -> tuple:
 
 if __name__ == '__main__':
     min_search(5)
+
