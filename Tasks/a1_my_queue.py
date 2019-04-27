@@ -1,6 +1,4 @@
-"""
-My little Queue
-"""
+"""My little Queue"""
 
 
 def enqueue(elem) -> None:
