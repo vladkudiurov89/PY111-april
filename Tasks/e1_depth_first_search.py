@@ -1,28 +1,22 @@
 from typing import Any
 import networkx as nx
 
-"""Do an depth-first search and returns list of nodes in the visited order
-:param g: input graph
-:param start_node: starting node of search
-:return: list of nodes in the visited order"""
 
-graph = {'A': ['B', 'C'],
-         'B': ['A', 'D', 'E'],
-         'C': ['A', 'F'],
-         'D': ['B'],
-         'E': ['B', 'F'],
-         'F': ['C', 'E']}
+def dfs(g: nx.Graph, start_node: Any) -> str:
+    """Do an depth-first search and returns list of nodes in the visited order
+    :param g: input graph
+    :param start_node: starting node of search
+    :return: list of nodes in the visited order"""
 
-
-def dfs(g: nx.Graph, start_node: Any) -> list:
-    visit, stack = [], [start_node]
+    way = []
+    stack = [start_node]
+    y = {node: [] for node in g.nodes}
     while stack:
-        ziz = stack.pop()
-        alfa = g.neighbors(ziz)
-        if ziz not in visit:
-            visit.append(ziz)
-            stack. extend(set(g[ziz])-set(visit))
-        # print(g, start_node)
-        # return list(g.nodes)
-        return visit
-    print(dfs(graph, 'A'))
+        elem = stack.pop()
+        way.append(elem)
+        for node in list(g.neighbors(elem)):
+            if node not in way:
+                stack.append(node)
+                y[node].extend((*y[elem], elem))
+    print(y)
+    return "".join(way)

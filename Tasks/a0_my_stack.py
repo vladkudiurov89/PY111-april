@@ -31,15 +31,16 @@ def pop():
 :param ind: index of element (count from the top)
 :return: peeked element"""
 
+
 def peek(ind: int = 0):
 	global my_stack
 	b = ind + 1
 	return my_stack[-b]
 
 
-
 """Clear my stack
 :return: None"""
+
 
 def clear() -> None:
 	global my_stack

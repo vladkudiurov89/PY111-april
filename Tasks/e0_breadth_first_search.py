@@ -1,21 +1,18 @@
 from typing import Any
 import networkx as nx
 
-"""Do an breadth-first search and returns list of nodes in the visited order
-:param g: input graph
-:param start_node: starting node for search
-:return:list of nodes in the visited order """
-
-graph = {'A': ['B', 'C'],
-         'B': ['A', 'D', 'E'],
-         'C': ['A', 'F'],
-         'D': ['B'],
-         'E': ['B', 'F'],
-         'F': ['C', 'E']}
-
 
 def bfs(g: nx.Graph, start_node: Any) -> list:
-    visit, list = [], ([start_node])
+    """Do an breadth-first search and returns list of nodes in the visited order
+    :param g: input graph
+    :param start_node: starting node for search
+    :return:list of nodes in the visited order """
+    visit, queue = [], ([start_node])
+    while queue:
+        way = queue.pop(0)
+        if way not in visit:
+            visit.append(way)
+            queue.extend(list(g[way]))
+    return visit
 
 
-    return list(g.nodes)
